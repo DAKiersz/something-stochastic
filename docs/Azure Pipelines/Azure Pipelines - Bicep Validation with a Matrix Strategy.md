@@ -29,6 +29,7 @@ A sample template for validating multiple Bicep deployment files (components in 
 	pool: ubuntu-latest
 	variables:
 		mode: 'Validation'
+		location: 'westeurope'
 	steps:
 	  - task: AzureResourceManagerTemplateDeployment@3
 		displayName: "Task - Validate $(component) deployment against $(env)"
@@ -37,10 +38,10 @@ A sample template for validating multiple Bicep deployment files (components in 
 		  azureResourceManagerConnection: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 		  subscriptionId: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 		  action: 'Create Or Update Resources'
-		  location: northeurope
+		  location: location
 		  templateLocation: 'Linked artifact'
-		  csmFile: '$(System.DefaultWorkingDirectory)/infra/$(component)/main.bicep'
-		  csmParametersFile: '$(System.DefaultWorkingDirectory)/infra/$(component)/config/main-$(env).template.parameters.json'
+		  csmFile: main.bicep
+		  csmParametersFile: parameters.json'
 		  deploymentMode: $(mode)
 		  deploymentName: $(env)-$(component)-validation-$(Build.BuildId)
 ```
@@ -57,15 +58,11 @@ https://learn.microsoft.com/en-us/azure/devops/pipelines/tasks/reference/azure-r
 
 https://learn.microsoft.com/en-us/azure/devops/pipelines/yaml-schema/jobs-job-strategy?view=azure-pipelines (Microsoft documentation  - `strategy` keyword definition)
 
----
-
 https://learn.microsoft.com/en-us/azure/devops/pipelines/process/expressions?view=azure-devops (Expressions)
 
 https://learn.microsoft.com/en-us/azure/devops/pipelines/process/runtime-parameters?view=azure-devops&tabs=script (Runtime parameters)
 
 https://learn.microsoft.com/en-us/azure/devops/pipelines/process/variables?view=azure-devops&tabs=yaml%2Cbatch#understand-variable-syntax (Variable syntax)
-
----
 
 https://mattvsts.github.io/2020/01/07/create-a-build-matrix-with-azure-pipelines/ (An excellent blog post about using matrix jobs in more detail)
 
