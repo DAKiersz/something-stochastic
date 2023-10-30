@@ -1,5 +1,10 @@
-# Windows - Package Management
-
+---
+title: Windows - Package Management
+date: 2023-10-12T14:02:00
+tags:
+  - Windows
+  - Automation
+---
 ## Winget
 
 A package manager for Windows, akin to `apt` in Debian based Linux distros.
