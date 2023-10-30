@@ -41,7 +41,7 @@ A sample template for validating multiple Bicep deployment files (components in 
 		  location: location
 		  templateLocation: 'Linked artifact'
 		  csmFile: main.bicep
-		  csmParametersFile: parameters.json'
+		  csmParametersFile: parameters.json
 		  deploymentMode: $(mode)
 		  deploymentName: $(env)-$(component)-validation-$(Build.BuildId)
 ```
